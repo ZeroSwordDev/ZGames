@@ -1,0 +1,18 @@
+.App{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #11141d;
+    
+    
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #1c1c1c51;
+  }
+  
+  /* Cambiar el color del pulgar de la barra de desplazamiento */
+  ::-webkit-scrollbar-thumb {
+    background-color: #5a5a5a60;
+  }

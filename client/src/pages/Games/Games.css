@@ -1,0 +1,4 @@
+.GamesContainer{
+    overflow: hidden;
+    overflow-y: auto;
+}

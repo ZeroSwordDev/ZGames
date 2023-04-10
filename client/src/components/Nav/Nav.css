@@ -1,0 +1,129 @@
+.flex{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.containernav {
+  background-color: #11141d;
+height: 150px;
+  width: 100%;
+  display: flex;
+  margin: 15px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-bottom:1px solid  #2b2a3197;
+  -webkit-box-shadow: 15px 30px 55px -21px rgba(121, 118, 118, 0.122);
+    -moz-box-shadow: 15px 30px 55px -21px rgba(121, 118, 118, 0.132);
+    box-shadow: 15px 30px 55px -21px rgba(121, 118, 118, 0.108);
+}
+
+.containerizqnav {
+  background-color: #dbdbdb44;
+  gap: 10px;
+  height: 46px;
+  padding: 5px;
+  flex: 2;
+  justify-content: center;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.containerizqnav hr {
+  height: 90%; /* altura deseada de la línea vertical */
+  border: none;
+  border-right: 1px solid rgba(151, 145, 145, 0.559); /* establecemos el borde derecho de la línea */
+  transform: rotate(180deg);
+}
+
+/* Imput  Nav*/
+.navinput {
+  width: 90%;
+  background: transparent;
+  border-color: transparent;
+  color: white;
+  outline: none; /* Agregamos la propiedad outline y establecemos su valor a none */
+}
+
+.navinput:focus {
+  outline: none; /* Establecemos la propiedad outline a none cuando el elemento tenga focus */
+}
+
+/* Container Derecha Nav */
+
+.containerdernav {
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 2;
+  gap: 50px;
+  margin-right: 50px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.avatar img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.logout button {
+  cursor: pointer;
+  color: white;
+  width: 80px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #cf4784;
+  background: -webkit-linear-gradient(110deg, #cf4784 0%, #f95651 100%);
+  background: linear-gradient(110deg, #cf4784 0%, #f95651 100%);
+}
+
+/* iconos Searh  */
+
+ion-icon {
+  color: white;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+ion-icon:hover {
+  opacity: 1;
+}
+
+.headerNav {
+  display: flex;
+  flex-direction: column;
+  color: #ece4e7;
+  width: 100%;
+  height: 450px;
+  position: absolute;
+  z-index: -999;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: block;
+  
+}
+.headerNav h1{
+  color: #110dff;
+}
+
+
+.headerNav img {
+  display: block;
+  color: #ece4e7;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

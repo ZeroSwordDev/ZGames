@@ -1,0 +1,82 @@
+.sidebarcontainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 350px;
+  background-color: #181a26;
+  height: 100%;
+  color: rgb(233, 228, 228);
+}
+
+.top {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(141, 139, 139, 0.174);
+  -webkit-box-shadow: 15px 30px 55px -21px rgba(121, 118, 118, 0.122);
+  -moz-box-shadow: 15px 30px 55px -21px rgba(121, 118, 118, 0.132);
+  box-shadow: 15px 30px 55px -21px rgba(121, 118, 118, 0.108);
+}
+
+.logo img {
+  width: 250px;
+}
+
+.logo {
+  padding: 10px;
+  margin-left: 50px;
+
+}
+
+/* Center SIDEBAR */
+
+.center {
+  flex: 6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containersidebarcenter {
+  width: 60%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+}
+.ulsidebarmenu {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.center ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 10px 30px;
+
+  cursor: pointer;
+}
+
+.center ul li ion-icon {
+  margin-right: 20px;
+}
+
+.active {
+  border-radius: 15px;
+  background: #cf4784;
+  background: -webkit-linear-gradient(110deg, #cf4784 0%, #f95651 100%);
+  background: linear-gradient(110deg, #cf4784 0%, #f95651 100%);
+}
+
+/* Center SIDEBAR */
+
+.bottom {
+  flex: 1;
+}

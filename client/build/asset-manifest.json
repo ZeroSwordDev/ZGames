@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.022510e3.chunk.css",
+    "main.js": "/static/js/main.feb2b34f.chunk.js",
+    "main.js.map": "/static/js/main.feb2b34f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.953bf9ea.js",
+    "runtime-main.js.map": "/static/js/runtime-main.953bf9ea.js.map",
+    "static/js/2.ed0b7fca.chunk.js": "/static/js/2.ed0b7fca.chunk.js",
+    "static/js/2.ed0b7fca.chunk.js.map": "/static/js/2.ed0b7fca.chunk.js.map",
+    "static/js/3.8c16d405.chunk.js": "/static/js/3.8c16d405.chunk.js",
+    "static/js/3.8c16d405.chunk.js.map": "/static/js/3.8c16d405.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.022510e3.chunk.css.map": "/static/css/main.022510e3.chunk.css.map",
+    "static/js/2.ed0b7fca.chunk.js.LICENSE.txt": "/static/js/2.ed0b7fca.chunk.js.LICENSE.txt",
+    "static/media/rostro-rectangular.e1e45978.jpg": "/static/media/rostro-rectangular.e1e45978.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.953bf9ea.js",
+    "static/js/2.ed0b7fca.chunk.js",
+    "static/css/main.022510e3.chunk.css",
+    "static/js/main.feb2b34f.chunk.js"
+  ]
+}
