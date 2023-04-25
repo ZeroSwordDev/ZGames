@@ -2,3 +2,34 @@
     overflow: hidden;
     overflow-y: auto;
 }
+
+.GamesContainerfiltered{
+    overflow-y: auto;
+
+}
+
+.GamesContainerfiltered{
+    color: white;
+  
+}
+
+
+.cardcontainerViewfiltered{
+    flex: 10;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+
+}
+
+.titleygenres :link{
+    list-style: none;
+    text-decoration: none;
+}
+
+.titleygenres h1{
+color: white;
+}

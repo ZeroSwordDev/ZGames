@@ -24,9 +24,8 @@
 }
 
 .logo {
-  padding: 10px;
+ 
   margin-left: 50px;
-
 }
 
 /* Center SIDEBAR */
@@ -79,4 +78,193 @@
 
 .bottom {
   flex: 1;
+}
+
+.nameGame{
+  display: flex;
+  gap: 10px;
+  border-radius: 15px;
+  align-items: center;
+  padding: 30px;
+
+}
+
+.descGame{
+  display: flex;
+  gap: 10px;
+  border-radius: 15px;
+  align-items: center;
+  padding: 30px;
+
+}
+
+.platformsGame{
+  display: flex;
+  gap: 10px;
+  border-radius: 15px;
+  align-items: center;
+  padding: 30px;
+
+}
+.imageGame{
+  display: flex;
+  gap: 10px;
+  border-radius: 15px;
+  align-items: center;
+  padding: 30px;
+
+}
+
+.releaseGame{
+  display: flex;
+  gap: 10px;
+  border-radius: 15px;
+  padding: 30px;
+  align-items: center;
+
+}
+.ratingGame{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+
+  padding: 30px;
+ 
+}
+
+.left{
+display: flex;
+justify-content: center;
+align-items: center;
+  flex: 1;
+  
+}
+
+.right{
+  background: #525151cc;
+ border-radius: 15px;
+  flex: 1;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.right h2{
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.right form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.right button{
+  padding: 15px;
+  border-radius: 10%;
+  border: none;
+  color: white;
+  background: #cf4784;
+  background: -webkit-linear-gradient(110deg, #cf4784 0%, #f95651 100%);
+  background: linear-gradient(110deg, #cf4784 0%, #f95651 100%);
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+
+#name,
+#released,
+#rating,
+#genreviews,
+#background_image{
+  border: none;
+  background-color: rgba(128, 128, 128, 0.363);
+  border-bottom: 1px solid rgb(196, 196, 196);
+  width: 300px;
+  height: 30px;
+  color: white;
+}
+
+#name,
+#released,
+#rating,
+#background_image ::placeholder{
+  color: white;
+}
+
+#description_raw{
+  border: none;
+  border-bottom: 1px solid rgb(182, 182, 182);
+  background-color: rgba(128, 128, 128, 0.363);
+  width: 300px;
+  height:100px;
+  color: white;
+}
+
+#description_raw::placeholder{
+  color: white;
+}
+
+.platformsGame{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.plataformaflex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.plataformaflexCheks{
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.plataformaSelected{
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgb(224, 217, 217);
+  color: black;
+  font-weight: 600;
+  border-radius: 15%;
+}
+.plataformaSelectedflex{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.titleplataforms{
+  margin-top: 20px;
+}
+
+.isDanger{
+  color: red;
+}
+.isSucces{
+  color: green;
+}
+
+.rowgenres{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.rowplataforma{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }

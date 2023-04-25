@@ -1,0 +1,11 @@
+.genreviews{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plataformaflexCheksGenres{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
