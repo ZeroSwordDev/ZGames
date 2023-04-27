@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CardGames from "../../components/CardGames/CardGames";
 import { Link } from "react-router-dom";
@@ -12,7 +12,38 @@ const Filtered = () => {
   );
   const games = useSelector((state) => state.Games);
 
-  useEffect(() => {}, [genresfilter, ratingFilter ]);
+  const [sort, setsort] = useState("");
+
+  useEffect(() => {}, [genresfilter, ratingFilter]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    setsort(e.target.value);
+  };
+
+
+  
+
+  const filteredGames = games
+    ?.filter(
+      (game) =>
+      (!genresfilter ||
+        !game.genres ||
+        game.genres.some((genre) => genre.name === genresfilter)) &&
+      // eslint-disable-next-line
+      (!ratingFilter || Math.round(game.rating) == ratingFilter)
+    )
+
+    .sort((a, b) => {
+      if (sort === "ACS") {
+        return a.name.localeCompare(b.name);
+      } else if (sort === "DESC") {
+        return b.name.localeCompare(a.name);
+      } else {
+        return a.id - b.id;
+      }
+    });
 
   return (
     <div className="GamesContainerfiltered">
@@ -22,21 +53,28 @@ const Filtered = () => {
           Back
         </Link>
         <h1> Resultados </h1>
+        <div className="sort">
+          <p>Ordenamiento:</p>
+          <div className="ascanddesc">
+            <select name="sort" id="sort" onClick={handleClick}>
+              <option value="">Selecione</option>
+              <option value="ACS">A a Z</option>
+              <option value="DESC">Z a A</option>
+            </select>
+          </div>
+        </div>
       </div>
       {
         <div className="cardcontainerViewfiltered">
-          {games
-            ?.filter(
-              (game) =>
-                (!genresfilter ||
-                  !game.genres ||
-                  game.genres.some((genre) => genre.name === genresfilter)) &&
-                // eslint-disable-next-line
-                (!ratingFilter || Math.round(game.rating) == ratingFilter)
-            )
-            .map((game, i) => (
-              <CardGames key={i} game={game} />
-            ))}
+          {filteredGames.length > 0 ? (
+            <div className="cardcontainerViewfiltered">
+              {filteredGames.map((game, i) => (
+                <CardGames key={i} game={game} />
+              ))}
+            </div>
+          ) : (
+            <div className="not-found">No se encontraron resultados.</div>
+          )}
         </div>
       }
     </div>

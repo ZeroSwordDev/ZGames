@@ -1,44 +1,33 @@
 export const Validation = (game) => {
-  const {
-    name,
-    description_raw,
-    platforms,
-    background_image,
-    released,
-    rating,
-  } = game;
-
-
-  let aux = '';
-if(!name ) {
-    aux = 'Name is required';
-    return aux;
-}else if(!description_raw) {
-    aux = 'Description is required';
-    return aux;
-}else if(platforms.length === 0) {
-    aux = 'one Platform is required';
-    return aux;
-}else if(!background_image){
-    aux = 'background image is required';
-    return aux;
-}else if(!released){
-    aux = 'Release is required';
-    return  aux;
-}else if(!rating ){
-    aux = 'Rating is required';
-    return  aux;
-}else if( !Number(rating)){
-    aux = 'Rating is Number 1 a 5 ';
-    return aux
-}else if( rating <= 0 || rating > 5){
-    aux = 'Rating not negative  (Number 1 a 5) ';
-    return aux
-}
-
 
    
-    return true
+        let errors = {};
+  
+        if (!game.name){
+          errors.name = "El usuario no puede estar vacío";
+          return errors;
+        }else if (!game.description_raw){
+          errors.desc = "La descripcion no puede estar vacío";
+          return errors;
+        }else  if (game.platforms.length === 0){
+          errors.platforms = "Debe pertenecer a alguna plataforma";
+          return errors;
+        }else if (game.generos.length === 0){
+          errors.platforms = "Debe tener a menos 1 genero";
+          return errors;
+        }else if ( !game.released ){
+          errors.released = "Juego debe tener un fecha de lanzamiento";
+          return errors;
+        }else if(!game.rating  ) {
+          errors.rating = "Debe tener una calificacion dentro del rango 1 al 5";
+          return errors;
+        }else if ( game.rating > 5 || game.rating < 0 ){
+          errors.rating = "Rating no puede ser mas alto que 5 o menor que 0";
+          return errors;
+        }
+
+     
+        return  true
 
 };
 

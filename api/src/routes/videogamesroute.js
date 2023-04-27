@@ -41,9 +41,9 @@ router.get('/videogames/name', async (req,res) => {
 
 router.post('/new', async (req,res) => {
 
-    const { name, description_raw , platforms, background_image, released, rating} = req.body;
+    const { name, description_raw , platforms, generos,  background_image, released, rating} = req.body;
 
-    const game = { name, description_raw, platforms, background_image, released, rating}
+    const game = { name, description_raw, platforms, generos, background_image, released, rating}
     try {
 
         const games = await postvideogames(game)

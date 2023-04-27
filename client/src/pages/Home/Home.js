@@ -5,7 +5,10 @@ import lyonsvg from '../../assest/lyonkennedy.png';
 import xbox from '../../assest/xbox.png';
 import ps5 from '../../assest/ps5.png';
 
+import {Link} from 'react-router-dom'
+
 const Home = ({setUser}) => {
+
   return (
 
     <>
@@ -26,7 +29,9 @@ const Home = ({setUser}) => {
           <img src={logoResident} alt="" />
           <h1 className='titlelogo'>Juego mas esperado del año.</h1>
           <div className="buttongames">
-          <button className='btndetails'>Details</button>
+          <Link to={'/games/795632'} >
+          <button className='btndetails' onClick={()=> setUser(true)}>Details</button>
+          </Link>
           <button className='btngames'  onClick={()=> setUser(true)}>Tier list Games</button>
           </div>
         </div>

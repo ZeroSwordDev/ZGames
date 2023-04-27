@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Validation } from "../../helpers/Validation/Validation";
 import { createvideoGames } from "../../redux/actions/actions";
 import GenresViews from "../../components/GenresViews/GenresViews";
 
 import "./Form.css";
+import { Validation } from "../../helpers/Validation/Validation";
 
 const Form = ({ setIsOpen, closeModal }) => {
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.genres);
-  const [validation, setValidation] = useState("");
+  const [error, seterror] = useState({});
 
   const [newGame, setNewGame] = useState({
     name: "",
     description_raw: "",
     platforms: [],
-    genres: [],
+    generos: [],
     background_image: "",
     released: "",
     rating: 0,
   });
-  
+
   const handleChange = (e) => {
     setNewGame({
       ...newGame,
@@ -42,55 +42,50 @@ const Form = ({ setIsOpen, closeModal }) => {
     }
   };
 
+  const isClickgenres = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+
+    if (!newGame.generos.includes(value)) {
+      setNewGame({
+        ...newGame,
+        generos: [...newGame.generos, value],
+      });
+    }
+  };
+
+  const deleteGenres = (genre) => {
+    if (newGame.generos.includes(genre)) {
+      setNewGame({
+        ...newGame,
+        generos: newGame.generos.filter((p) => !p.includes(genre)),
+      });
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const isValid = Validation(newGame);
-    setValidation(isValid);
+    seterror(isValid)
 
-    if (isValid) {
-      dispatch(createvideoGames(newGame))
-        .then((game) => setIsOpen(false))
-        .catch((e) => console.log(e));
 
-      setNewGame({
-        name: "",
-        description_raw: "",
-        platforms: [],
-        genres: [],
-        background_image: "",
-        released: "",
-        rating: 0,
-      });
-    } else {
-      return;
-    }
-  };
+    if (Object.values(isValid).length > 0) return;
 
-  const isClickgenres = (e) => {
+    /* if (!isValid) return; */
+    dispatch(createvideoGames(newGame))
+      .then((game) => setIsOpen(false))
+      .catch((e) => console.log(e));
 
-    e.preventDefault();
-    const value = e.target.value;
-
-    if (!newGame.genres.includes(value)) {
-      setNewGame({
-        ...newGame,
-        genres: [...newGame.genres, value],
-      });
-    }
-  };
-
-const deleteGenres = (genre) => {
- 
-
-  if(newGame.genres.includes(genre)){
     setNewGame({
-      ...newGame,
-      genres: newGame.genres.filter(p => !p.includes(genre)),
+      name: "",
+      description_raw: "",
+      platforms: [],
+      generos: [],
+      background_image: "",
+      released: "",
+      rating: 0,
     });
-  }
-
-}
+  };
 
   return (
     <div>
@@ -108,9 +103,7 @@ const deleteGenres = (genre) => {
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" onChange={handleChange} />
         </div>
-        {validation === "Name is required" && (
-          <p className=" isDanger">{validation}</p>
-        )}
+        {error?.name && <p className="isDanger">{error.name}</p>}
         <div className="descGame">
           <label htmlFor="description_raw">Desciption:</label>
           <textarea
@@ -120,9 +113,7 @@ const deleteGenres = (genre) => {
             onChange={handleChange}
           />
         </div>
-        {validation === "Description is required" && (
-          <p className=" isDanger">{validation}</p>
-        )}
+        {error?.desc && <p className="isDanger">{error.desc}</p>}
         <div className="platformsGame">
           <div className="plataformaflex">
             <label htmlFor="platforms">Plataformas</label>
@@ -155,28 +146,33 @@ const deleteGenres = (genre) => {
                 PC
               </label>
             </div>
-            {validation === "one Platform is required" && (
-              <p className=" isDanger">{validation}</p>
-            )}
           </div>
+          {error?.platforms && <p className="isDanger">{error.platforms}</p>}
           <div className="plataformGenresall">
-            <div className="plataformaflexCheksGenres">
-              <div className="genreviews">
-                <label htmlFor="genreviews">
-                  <select id="genreviews" onChange={isClickgenres}>
-                    <option value=""> Selecciona..</option>
-                    {genres?.map((genre) => (
-                      <GenresViews key={genre.id} genre={genre} />
-                    ))}
-                  </select>
-                </label>
-              </div>
-            </div>
+            <div className="plataformaflexCheksGenres"></div>
           </div>
           <div className="plataformaSelectedflex">
+            <div className="rowplataforma">
+              <h4>PLataformas</h4>
+              {newGame.platforms?.map((p, i) => (
+                <p className="plataformaSelected" key={i}>
+                  {p}
+                </p>
+              ))}
+            </div>
+            <div className="genreviews">
+              <label htmlFor="genreviews">
+                <select id="genreviews" onChange={isClickgenres}>
+                  <option value=""> Selecciona..</option>
+                  {genres?.map((genre) => (
+                    <GenresViews key={genre.id} genre={genre} />
+                  ))}
+                </select>
+              </label>
+            </div>
+
             <div className="rowgenres">
-              <h4>Genres</h4>
-              {newGame.genres?.map((genre, i) => (
+              {newGame.generos?.map((genre, i) => (
                 <p
                   className="plataformaSelected"
                   key={i}
@@ -186,16 +182,9 @@ const deleteGenres = (genre) => {
                 </p>
               ))}
             </div>
-            <div className="rowplataforma">
-              <h4>PLataformas</h4>
-              {newGame.platforms?.map((p, i) => (
-                <p className="plataformaSelected" key={i}>
-                  {p}
-                </p>
-              ))}
-            </div>
           </div>
         </div>
+        {error?.generos && <p className="isDanger">{error.generos}</p>}
         <div className="imageGame">
           <label htmlFor="background_image">Image:</label>
           <input
@@ -205,9 +194,7 @@ const deleteGenres = (genre) => {
             onChange={handleChange}
           />
         </div>
-        {validation === "background image is required" && (
-          <p className=" isDanger">{validation}</p>
-        )}
+
         <div className="releaseGame">
           <label htmlFor="released">Release:</label>
           <input
@@ -217,9 +204,7 @@ const deleteGenres = (genre) => {
             onChange={handleChange}
           />
         </div>
-        {validation === "Release is required" && (
-          <p className=" isDanger">{validation}</p>
-        )}
+        {error?.released && <p className="isDanger">{error.released}</p>}        
         <div className="ratingGame">
           <label htmlFor="rating">Rating:</label>
           <input
@@ -229,13 +214,8 @@ const deleteGenres = (genre) => {
             onChange={handleChange}
           />
         </div>
-        {validation === "Rating is required" && (
-          <p className=" isDanger">{validation}</p>
-        )}
+        {error?.rating && <p className="isDanger">{error.rating}</p>}           
         <button type="submit">Agregar Juego</button>
-        {validation === "Game successfully created" && (
-          <p className=" isSucces">{validation}</p>
-        )}
       </form>
     </div>
   );

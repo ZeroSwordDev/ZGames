@@ -88,7 +88,7 @@ export const gameDetail = (id) => {
 
 export const createvideoGames = (game) => {
   return async function (dispatch) {
-    console.log('game', game)
+
     
     const res = await axios.post(`http://localhost:3001/games/new`, game)
    

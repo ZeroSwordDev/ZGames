@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFilteredGenresAndRating } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 
-const Filtered = ({ setisOpenFiltered }) => {
+const Filtered = ( ) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
