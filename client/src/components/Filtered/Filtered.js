@@ -14,13 +14,14 @@ const Filtered = ( ) => {
   
   const [genresfiltered, setGenresfiltered] = useState('');
   const [ratingfiltered, setRatingfiltered] = useState('');
-  
+  const [typeFiltered, setTypeFiltered] = useState('');
+
   
 
   const handleClickFitlered = async (e) => {
     e.preventDefault();
 
-   dispatch(getFilteredGenresAndRating(genresfiltered, ratingfiltered))
+   dispatch(getFilteredGenresAndRating(genresfiltered, ratingfiltered,typeFiltered))
 
     navigate(`/filtered`)
   }
@@ -48,10 +49,21 @@ const Filtered = ( ) => {
         <option value="2">2</option>
         <option value="1">1</option>
       </select>
+      
       </div>
 
+   <div className="filteredRatingall">
+   <label htmlFor="selectfilteredRating"> Filtrar(Campo Obligatorio)</label>
+    <select name="" id="" onChange={(e) => setTypeFiltered(e.target.value)}>
+      <option value="">Seleccionar</option>
+      <option value="API">API</option>
+      <option value="JUEGOS">Juegos Creados</option>
+    </select>
+   </div>
+
+
       <div className="buttonfilteredall isDisable">
-        <button onClick={handleClickFitlered}>Aplicar Filtros</button>
+        <button onClick={handleClickFitlered} className={typeFiltered === '' ? "isDisableFilter" : ''}>Aplicar Filtros</button>
       </div>
     </div>
   );

@@ -66,8 +66,7 @@ const Form = ({ setIsOpen, closeModal }) => {
     e.preventDefault();
 
     const isValid = Validation(newGame);
-    seterror(isValid)
-
+    seterror(isValid);
 
     if (Object.values(isValid).length > 0) return;
 
@@ -204,7 +203,7 @@ const Form = ({ setIsOpen, closeModal }) => {
             onChange={handleChange}
           />
         </div>
-        {error?.released && <p className="isDanger">{error.released}</p>}        
+        {error?.released && <p className="isDanger">{error.released}</p>}
         <div className="ratingGame">
           <label htmlFor="rating">Rating:</label>
           <input
@@ -214,7 +213,7 @@ const Form = ({ setIsOpen, closeModal }) => {
             onChange={handleChange}
           />
         </div>
-        {error?.rating && <p className="isDanger">{error.rating}</p>}           
+        {error?.rating && <p className="isDanger">{error.rating}</p>}
         <button type="submit">Agregar Juego</button>
       </form>
     </div>

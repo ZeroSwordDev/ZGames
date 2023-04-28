@@ -10,6 +10,8 @@ const Filtered = () => {
   const ratingFilter = useSelector(
     (state) => state.filteredOptions.ratingFilter
   );
+  const typeFilter = useSelector((state) => state.filteredOptions.typeFilter);
+
   const games = useSelector((state) => state.Games);
 
   const [sort, setsort] = useState("");
@@ -22,19 +24,32 @@ const Filtered = () => {
     setsort(e.target.value);
   };
 
-
-  
-
-  const filteredGames = games
+  const filteredGamesApi = games
+    ?.filter((games) => typeFilter === "API" && typeof games.id === "number")
     ?.filter(
       (game) =>
-      (!genresfilter ||
-        !game.genres ||
-        game.genres.some((genre) => genre.name === genresfilter)) &&
-      // eslint-disable-next-line
-      (!ratingFilter || Math.round(game.rating) == ratingFilter)
+        (!genresfilter ||
+          !game.genres ||
+          game.genres?.some((genre) => genre.name === genresfilter)) &&
+        // eslint-disable-next-line
+        (!ratingFilter || Math.round(game.rating) == ratingFilter)
     )
+    .sort((a, b) => {
+      if (sort === "ACS") {
+        return a.name.localeCompare(b.name);
+      } else if (sort === "DESC") {
+        return b.name.localeCompare(a.name);
+      } else {
+        return a.id - b.id;
+      }
+    });
 
+  const filteredGamesDB = games
+    ?.filter((games) =>  typeof games.id === "string")
+    ?.filter(
+      (game) =>
+        game.generos.includes(genresfilter)
+    )
     .sort((a, b) => {
       if (sort === "ACS") {
         return a.name.localeCompare(b.name);
@@ -52,7 +67,7 @@ const Filtered = () => {
           <ion-icon size="large" name="return-up-back-outline"></ion-icon>
           Back
         </Link>
-        <h1> Resultados </h1>
+        <h1 > Resultados </h1>
         <div className="sort">
           <p>Ordenamiento:</p>
           <div className="ascanddesc">
@@ -64,11 +79,11 @@ const Filtered = () => {
           </div>
         </div>
       </div>
-      {
+      {typeFilter === "API" ? (
         <div className="cardcontainerViewfiltered">
-          {filteredGames.length > 0 ? (
+          {filteredGamesApi.length > 0 ? (
             <div className="cardcontainerViewfiltered">
-              {filteredGames.map((game, i) => (
+              {filteredGamesApi.map((game, i) => (
                 <CardGames key={i} game={game} />
               ))}
             </div>
@@ -76,7 +91,19 @@ const Filtered = () => {
             <div className="not-found">No se encontraron resultados.</div>
           )}
         </div>
-      }
+      ) : (
+        <div className="cardcontainerViewfiltered">
+          {filteredGamesDB.length > 0 ? (
+            <div className="cardcontainerViewfiltered">
+              {filteredGamesDB.map((game, i) => (
+                <CardGames key={i} game={game} />
+              ))}
+            </div>
+          ) : (
+            <div className="not-found">No se encontraron resultados.</div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

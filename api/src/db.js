@@ -5,10 +5,10 @@ const {
 } = process.env;
 
 
-const sequelize = new Sequelize(`postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_DATABASE}`, {
+const sequelize = new Sequelize(`postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/railway`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  port: 6272 // Agregas el puerto aquí
+  port: 7271 // Agregas el puerto aquí
 });
 /* const basename = path.basename(__filename);
 

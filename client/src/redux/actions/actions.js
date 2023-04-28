@@ -115,14 +115,15 @@ export const getGenresall = () => {
 }
 
 
-export const getFilteredGenresAndRating = (genre , rating) => {
+export const getFilteredGenresAndRating = (genre , rating, type) => {
   
   return async function (dispatch) {
     return dispatch({
       type: FILTERED_ALL,
       payload: {
         genre,
-        rating
+        rating,
+        type
       }
     });
     

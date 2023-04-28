@@ -10,6 +10,7 @@ const initialState = {
   filteredOptions: {
     genresFilter: '',
     ratingFilter: '',
+    typeFilter: '',
   }
 };
 
@@ -54,12 +55,13 @@ const RootReducer = (state = initialState, action) => {
             genres: action.payload
           }
           case FILTERED_ALL:
-            const { genre, rating } = action.payload;
+            const { genre, rating ,type} = action.payload;
             return{
               ...state,
               filteredOptions: {
                 genresFilter: genre,
-                ratingFilter: rating
+                ratingFilter: rating,
+                typeFilter: type
               }
             }
     default:

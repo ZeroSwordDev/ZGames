@@ -1,6 +1,6 @@
 .FilteredGames{
-width: 200px;
-height: 200px;
+width: 300px;
+height: 300px;
 background-color: rgb(71, 71, 77);
 position: absolute;
 z-index: 2;
@@ -11,20 +11,27 @@ display: flex;
 justify-content: space-evenly;
 flex-direction: column;
 align-items: center;
+gap: 10px;
 }
 
 .filteredGenresall{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center;
+    width: 180px;
 }
 
 .filteredRatingall{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
 }
 
+.filteredRatingall select{
+    width: 180px;
+}
 
 .buttonfilteredall button{
     padding: 10px;
@@ -36,6 +43,10 @@ align-items: center;
 .GamesContainerfiltered ion-icon{
  color: white;
 
+}
+
+.isDisableFilter{
+    display: none;
 }
 
 .backfilter{
